@@ -6,5 +6,10 @@ namespace Lab3
         {
             InitializeComponent();
         }
+
+        private void Температура_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
