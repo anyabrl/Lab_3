@@ -27,10 +27,6 @@ namespace Lab3
         {
             InitializeComponent(); // Рисует кнопки и графики из Designer.cs
 
-            // Жестко привязываем кнопки к коду, чтобы точно работало
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            this.btnForecast.Click += new System.EventHandler(this.btnForecast_Click);
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
         }
 
         // Этот метод вызывается автоматически при старте программы

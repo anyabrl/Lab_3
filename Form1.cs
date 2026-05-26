@@ -7,14 +7,5 @@ namespace Lab3
             InitializeComponent();
         }
 
-        private void Температура_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void temperatureControl1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
