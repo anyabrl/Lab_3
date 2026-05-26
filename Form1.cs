@@ -11,5 +11,10 @@ namespace Lab3
         {
 
         }
+
+        private void temperatureControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
