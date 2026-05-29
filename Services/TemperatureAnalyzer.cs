@@ -1,12 +1,11 @@
 ﻿using Lab3.Models;
-using Lab3.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Lab3.Services
 {
-    // SOLID: Этот класс знает ТОЛЬКО как анализировать температуру
+    // Этот класс знает только как анализировать температуру
     public class TemperatureAnalyzer
     {
         public string FindTemperatureDrops(List<TemperatureRecord> data)
