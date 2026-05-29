@@ -15,25 +15,22 @@ namespace Lab3
 {
     public partial class TemperatureControl : UserControl
     {
-        // SOLID (DIP): Мы зависим от сервисов, а не пишем логику прямо тут
+        // Зависим от сервисов
         private readonly ForecastService _forecaster = new ForecastService();
         private readonly TemperatureAnalyzer _analyzer = new TemperatureAnalyzer();
 
+        // Хранилище данных и модель графика OxyPlot
         private List<TemperatureRecord> _data = new List<TemperatureRecord>();
         private PlotModel _plotModel;
 
-        // КОНСТРУКТОР: Без него ничего не заработает!
+        // Конструктор
         public TemperatureControl()
         {
             InitializeComponent(); // Рисует кнопки и графики из Designer.cs
 
-            // Жестко привязываем кнопки к коду, чтобы точно работало
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            this.btnForecast.Click += new System.EventHandler(this.btnForecast_Click);
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
         }
 
-        // Этот метод вызывается автоматически при старте программы
+        // Этот метод настраивает график автоматически при старте программы
         private void TemperatureControl_Load(object sender, EventArgs e)
         {
             SetupPlot();
@@ -42,7 +39,7 @@ namespace Lab3
         private void SetupPlot()
         {
             _plotModel = new PlotModel { Title = "Температура за месяц" };
-            plotView.Model = _plotModel;
+            plotView.Model = _plotModel; // Привязываем модель к визуальному элементу
         }
 
         // Кнопка "Открыть файл"
@@ -55,17 +52,17 @@ namespace Lab3
 
                 try
                 {
-                    // Читаем файл
+                    // Чтение и преобразование JSON в список объектов C#
                     string json = File.ReadAllText(ofd.FileName);
                     _data = JsonSerializer.Deserialize<List<TemperatureRecord>>(json);
 
-                    // 1. Выводим в таблицу
+                    // Выводим в таблицу
                     dataGridView1.DataSource = _data;
 
-                    // 2. Показываем результат анализа (перепады)
+                    // Показываем результат анализа (перепады)
                     lblResult.Text = _analyzer.FindTemperatureDrops(_data);
 
-                    // 3. Рисуем график
+                    // Рисуем график
                     DrawGraph();
                 }
                 catch (Exception ex)
@@ -123,6 +120,7 @@ namespace Lab3
             var maxFSeries = new LineSeries { Title = "Прогноз макс.", LineStyle = LineStyle.Dash, Color = OxyColors.OrangeRed };
             var minFSeries = new LineSeries { Title = "Прогноз мин.", LineStyle = LineStyle.Dash, Color = OxyColors.LightBlue };
 
+            // Добавляем точки прогноза 
             for (int i = 0; i < n; i++)
             {
                 double x = DateTimeAxis.ToDouble(lastDate.AddDays(i + 1));

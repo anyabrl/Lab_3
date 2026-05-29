@@ -6,9 +6,6 @@ using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using System.Windows.Forms;
 
 namespace Lab3

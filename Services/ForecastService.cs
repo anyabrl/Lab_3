@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Lab3.Services
 {
-    // SOLID: Единственная ответственность - только математика
+    // Единственная ответственность - только математика
     public class ForecastService
     {
         public List<double> Predict(List<double> data, int windowSize, int forecastCount)
